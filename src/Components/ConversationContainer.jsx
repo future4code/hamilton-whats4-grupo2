@@ -8,8 +8,8 @@ export default function AppContainer() {
       <Container>
         <ConversationBox />
       </Container>
-      <BackGround></BackGround>
-      <FakeHeader></FakeHeader>
+      <BackGround/>
+      <FakeHeader/>
     </>
   );
 }

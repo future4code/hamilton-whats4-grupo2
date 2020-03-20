@@ -9,13 +9,13 @@ export default class ConversationMsg extends Component {
   };
 
   render() {
-    const { user, msg } = this.props;
+    const { user, msg, clip } = this.props;
     let eu = user === "Eu" || user === "eu" || user === "EU";
     return (
       <Cotainer eu={eu}>
         <User>{user}:</User>
         <Msg>{msg}</Msg>
-        <Clip eu={eu}></Clip>
+        {clip ? <Clip eu={eu}></Clip> : null}
       </Cotainer>
     );
   }
@@ -29,7 +29,7 @@ const Cotainer = styled.div`
   min-width: 100px;
   min-height: 20px;
   position: relative;
-  border-top-left-radius: 0px;
+  /* border-top-left-radius: 0px; */
   flex: none;
   margin-top: 20px;
 

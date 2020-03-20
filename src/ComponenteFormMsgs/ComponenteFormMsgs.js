@@ -12,7 +12,6 @@ class FormMsg extends React.Component {
             placeholder={"Usuario"}
           />
           <InputMsg
-            className="inputMsg"
             value={this.props.valorInputMensagem}
             onChange={this.props.onChangeInputMensagem}
             placeholder={"Mensagem"}
@@ -24,31 +23,27 @@ class FormMsg extends React.Component {
   }
 }
 
-const MsgUsuario = styled.p`
-  background-color: #c7adad;
-  color: #382f2f;
-  width: fit-content;
-  border: 1px solid #382f2f;
-`;
 const InputName = styled.input`
   padding: 10px;
   width: 10%;
+  margin: 10px;
+  border-radius: 4px;
 `;
 const InputMsg = styled.input`
   padding: 10px;
-  width: 20%;
-  transition: width 0.4s ease-in-out;
-
-  &:focus {
-    width: 60%;
-  }
+  width: 77%;
+  margin: 10px;
+  border-radius: 4px;
 `;
 
 const BotaoEnviar = styled.button`
   background-color: #752728;
   color: #c7adad;
-  padding: 12px;
+  padding: 10px;
   border: none;
+  width: fit-content;
+  border-radius: 4px;
+  font-weight: 900;
 `;
 
 export default FormMsg;

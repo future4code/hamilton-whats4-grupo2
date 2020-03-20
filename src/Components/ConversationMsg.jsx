@@ -38,7 +38,8 @@ const Cotainer = styled.div`
     props.eu &&
     css`
       align-self: flex-end;
-      background-color: #dcf8c6;
+      background-color: #AD393B /*#dcf8c6*/;
+      color: #D0C5C4;
     `}
 `;
 
@@ -59,13 +60,13 @@ const Clip = styled.div`
   position: absolute;
   top: 0;
   clip-path: polygon(0 0, 100% 0, 100% 100%);
-
+  
   ${props =>
     props.eu &&
     css`
-      scale: -1 1;
+      transform: scaleX(-1);
       right: -10px;
-      background-color: #dcf8c6;
+      background-color: #AD393B /*#dcf8c6*/;
     `}
 
   ${props =>

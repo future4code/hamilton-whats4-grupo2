@@ -64,11 +64,11 @@ const Wrapper = styled.div`
 const Header = styled.div`
   height: 55px;
   flex: none;
-  background-color: #ededed;
+  background-color: #382F2F /*#ededed*/;
 `;
 
 const Viewport = styled.div`
-  background-color: #e5ddd5;
+  background-color: #C7ADAD /*#e5ddd5*/;
   height: 100%;
   overflow-y: scroll;
 `;

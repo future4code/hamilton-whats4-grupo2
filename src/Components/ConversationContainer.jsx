@@ -32,7 +32,7 @@ const BackGround = styled.div`
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background-color: #d7dbd6;
+  background-color: #d7dbd6 /**/ ;
   z-index: -2;
   display: flex;
   flex-direction: column;
@@ -42,6 +42,6 @@ const FakeHeader = styled.div`
   position: absolute;
   width: 100vw;
   height: 125px;
-  background-color: #009688;
+  background-color: #752728 /*#009688*/ ;
   z-index: -1;
 `;

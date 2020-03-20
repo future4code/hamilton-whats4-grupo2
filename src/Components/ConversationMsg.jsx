@@ -5,7 +5,8 @@ import styled, { css } from "styled-components";
 export default class ConversationMsg extends Component {
   static propTypes = {
     user: PropTypes.string.isRequired,
-    msg: PropTypes.string.isRequired
+    msg: PropTypes.string.isRequired,
+    clip: PropTypes.bool
   };
 
   render() {

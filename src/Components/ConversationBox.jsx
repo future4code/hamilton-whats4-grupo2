@@ -1,39 +1,58 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import ConversationMsg from "./ConversationMsg";
+import ComponenteFormMsgs from "../ComponenteFormMsgs/ComponenteFormMsgs";
 
 export default class ConversationBox extends Component {
-  conversationList = () => {
-    let arr = [];
-    for (let i = 0; i < 20; i++) {
-      arr.push(
-        <ConversationMsg
-          user={i % 2 == 0 ? "cazuza" : "eu"}
-          msg="dafuq! dafuq! dafu! k1 k2 k3 k4 k5 lemme out"
-          clip={true}
-        />
-      );
-    }
-    return arr;
+  state = {
+    feedMensagens: [],
+    valorInputUsuario: "",
+    valorInputMensagem: ""
+  };
+
+  enviaMensagem = event => {
+    event.preventDefault();
+    const novaMensagem = {
+      usuario: this.state.valorInputUsuario,
+      mensagem: this.state.valorInputMensagem
+    };
+    const novasMensagens = [...this.state.feedMensagens, novaMensagem];
+
+    this.setState({ feedMensagens: novasMensagens, valorInputMensagem: "" });
+  };
+
+  onChangeInputUsuario = event => {
+    this.setState({ valorInputUsuario: event.target.value });
+  };
+  onChangeInputMensagem = event => {
+    this.setState({ valorInputMensagem: event.target.value });
   };
 
   render() {
+    let listaDeMensagens = this.state.feedMensagens.map(element => (
+      <ConversationMsg
+        user={element.usuario}
+        msg={element.mensagem}
+        clip={true}
+      ></ConversationMsg>
+    ));
     return (
       <Wrapper>
         <Header />
         <Viewport>
-          <Conversation>{this.conversationList()}</Conversation>
+          <Conversation>{listaDeMensagens}</Conversation>
         </Viewport>
-        <Footer />
+        <ComponenteFormMsgs
+          valorInputMensagem={this.state.valorInputMensagem}
+          onChangeInputMensagem={this.onChangeInputMensagem}
+          valorInputUsuario={this.state.valorInputUsuario}
+          onChangeInputUsuario={this.onChangeInputUsuario}
+          enviaMensagem={this.enviaMensagem}
+        />
       </Wrapper>
     );
   }
 }
-
-const Footer = styled.div`
-  height: 100px;
-  background-color: red;
-`;
 
 const Wrapper = styled.div`
   width: 100%;
@@ -56,7 +75,7 @@ const Viewport = styled.div`
 
 const Conversation = styled.div`
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   padding: 0 5vw;

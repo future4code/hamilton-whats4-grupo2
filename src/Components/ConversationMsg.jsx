@@ -14,7 +14,7 @@ export default class ConversationMsg extends Component {
     let eu = user === "Eu" || user === "eu" || user === "EU";
     return (
       <Cotainer eu={eu}>
-        <User>{user}:</User>
+        {eu ? null : <User>{user}:</User>}
         <Msg>{msg}</Msg>
         {clip ? <Clip eu={eu}></Clip> : null}
       </Cotainer>

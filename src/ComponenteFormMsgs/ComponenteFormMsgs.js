@@ -33,7 +33,7 @@ class FormMsg extends React.Component {
     const { valorInputUsuario, valorInputMensagem } = this.state;
     return (
       <div>
-        <Form>
+        <form>
           <InputName
             value={valorInputUsuario}
             onChange={this.onChangeInputUsuario}
@@ -44,11 +44,8 @@ class FormMsg extends React.Component {
             onChange={this.onChangeInputMensagem}
             placeholder={"Mensagem"}
           />
-
-          <BotaoEnviar onClick={this.props.enviaMensagem}>Enviar</BotaoEnviar>
-        </Form>
-
-
+          <BotaoEnviar onClick={this.onSubmitHandler}>Enviar</BotaoEnviar>
+        </form>
       </div>
     );
   }
@@ -57,7 +54,6 @@ class FormMsg extends React.Component {
 const InputName = styled.input`
   padding: 10px;
   width: 10%;
-  min-width: 75px;
   margin: 10px;
   border-radius: 4px;
 `;
@@ -76,10 +72,6 @@ const BotaoEnviar = styled.button`
   width: fit-content;
   border-radius: 4px;
   font-weight: 900;
-  margin: 10px;
-`
-const Form = styled.form `
-  display: flex;
-`
+`;
 
 export default FormMsg;

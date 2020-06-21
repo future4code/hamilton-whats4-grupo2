@@ -9,20 +9,29 @@ export default class ConversationMsg extends Component {
     clip: PropTypes.bool
   };
 
+  doubleClickHandler = () => {
+    if (window.confirm("Delete Message ?"))
+      this.props.deleteMsg(this.props.myId);
+  };
+
   render() {
-    const { user, msg, clip } = this.props;
-    let eu = user === "Eu" || user === "eu" || user === "EU";
+    const { user, msg, firstMsgFromUser } = this.props;
+    let isMainUser = user === "Eu" || user === "eu" || user === "EU";
     return (
-      <Cotainer eu={eu}>
-        {eu ? null : <User>{user}:</User>}
+      <Container
+        firstMsgFromUser={firstMsgFromUser}
+        mainUser={isMainUser}
+        onDoubleClick={this.doubleClickHandler}
+      >
+        {isMainUser ? null : <User>{user}:</User>}
         <Msg>{msg}</Msg>
-        {clip ? <Clip eu={eu}></Clip> : null}
-      </Cotainer>
+        {firstMsgFromUser ? <Clip mainUser={isMainUser}></Clip> : null}
+      </Container>
     );
   }
 }
 
-const Cotainer = styled.div`
+const Container = styled.div`
   background-color: white;
   padding: 5px 10px;
   border-radius: 7px;
@@ -32,14 +41,14 @@ const Cotainer = styled.div`
   position: relative;
   /* border-top-left-radius: 0px; */
   flex: none;
-  margin-top: 20px;
+  margin-top: ${props => (props.firstMsgFromUser ? "20px" : "3px")};
 
   ${props =>
-    props.eu &&
+    props.mainUser &&
     css`
       align-self: flex-end;
-      background-color: #AD393B /*#dcf8c6*/;
-      color: #D0C5C4;
+      background-color: #ad393b /*#dcf8c6*/;
+      color: #d0c5c4;
     `}
 `;
 
@@ -60,17 +69,17 @@ const Clip = styled.div`
   position: absolute;
   top: 0;
   clip-path: polygon(0 0, 100% 0, 100% 100%);
-  
+
   ${props =>
-    props.eu &&
+    props.mainUser &&
     css`
       transform: scaleX(-1);
       right: -10px;
-      background-color: #AD393B /*#dcf8c6*/;
+      background-color: #ad393b /*#dcf8c6*/;
     `}
 
   ${props =>
-    !props.eu &&
+    !props.mainUser &&
     css`
       left: -10px;
     `}

@@ -5,7 +5,7 @@ class FormMsg extends React.Component {
   render() {
     return (
       <div>
-        <form>
+        <Form>
           <InputName
             value={this.props.valorInputUsuario}
             onChange={this.props.onChangeInputUsuario}
@@ -17,7 +17,7 @@ class FormMsg extends React.Component {
             placeholder={"Mensagem"}
           />
           <BotaoEnviar onClick={this.props.enviaMensagem}>Enviar</BotaoEnviar>
-        </form>
+        </Form>
       </div>
     );
   }
@@ -26,6 +26,7 @@ class FormMsg extends React.Component {
 const InputName = styled.input`
   padding: 10px;
   width: 10%;
+  min-width: 75px;
   margin: 10px;
   border-radius: 4px;
 `;
@@ -44,6 +45,10 @@ const BotaoEnviar = styled.button`
   width: fit-content;
   border-radius: 4px;
   font-weight: 900;
-`;
+  margin: 10px;
+`
+const Form = styled.form `
+  display: flex;
+`
 
 export default FormMsg;
